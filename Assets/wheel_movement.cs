@@ -2,14 +2,16 @@ using Unity.VisualScripting;
 using UnityEditor.PackageManager.Requests;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Jobs;
 using UnityEngine.U2D;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class wheel_movement : MonoBehaviour
 {
-    [SerializeField] private float forceStrength = 10f;
-    [SerializeField] private float restoringTorque = 3f;
-    private Rigidbody2D wheelRigidbody;
+    [SerializeField] private float forceStrength = 5f;
+    [SerializeField] private float restoringForce = 5f;
+    [SerializeField] private Rigidbody2D wheelRigidbody;
+    [SerializeField] private Transform playerPosition;
     private float direction;
     private float restore;
     private void Awake()
@@ -39,14 +41,14 @@ public class wheel_movement : MonoBehaviour
     {
         Quaternion angle = transform.rotation;
         restore = angle.z / 0.7489139f;
-
     }
     private void FixedUpdate()
     {
-        wheelRigidbody.AddForceAtPosition(direction * transform.right * forceStrength, transform.position - new Vector3(0, 0.75f, 0));
+        wheelRigidbody.AddForceAtPosition(direction * transform.right * forceStrength, playerPosition.position - new Vector3(0, 1f, 0));
         PID();
-        wheelRigidbody.AddTorque(restore * restoringTorque);
-        Debug.Log(restore * restoringTorque);
 
+        Vector3 restoreForce = new Vector3(restore * restoringForce, transform.up.y, 0);
+        wheelRigidbody.AddForceAtPosition(restoreForce, playerPosition.position + new Vector3(0, 1f, 0));
+        Debug.Log(restoreForce);
     }
 }
