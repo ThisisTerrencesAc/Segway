@@ -4,15 +4,22 @@ using UnityEngine.UI;
 
 public class AudioManager : MonoBehaviour
 {
+    
+    public static float audioSliderVal =1.0f;
+    public static float sfxSliderVal = 1.0f;
+    public static float bgSliderVal = 1.0f;
     [SerializeField] AudioMixer mixer;
     [SerializeField] string exposedMusicParam;
     [SerializeField] Slider audioSlider;
     [SerializeField] Slider sfxSlider;
     [SerializeField] Slider bgSlider;
+    public static AudioManager instance;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        audioSlider.value = audioSliderVal;
+        sfxSlider.value = sfxSliderVal;
+        bgSlider.value = bgSliderVal;
     }
 
     // Update is called once per frame
@@ -20,19 +27,33 @@ public class AudioManager : MonoBehaviour
     {
         
     }
+    void Awake()
+    {
+        if(instance == null)
+        {
+                instance = this;
+                DontDestroyOnLoad(gameObject);
+        }
+
+
+        
+    }
     public void SetMusicVolume()
     {
-            float volumeinDb = Mathf.Log10(Mathf.Max(audioSlider.value, 0.00001f)) * 20f;
+            audioSliderVal = audioSlider.value;
+            float volumeinDb = Mathf.Log10(Mathf.Max(audioSliderVal, 0.00001f)) * 20f;
             mixer.SetFloat(exposedMusicParam, volumeinDb);
     }
     public void SetSFXVolume()
     {
-            float volumeinDb = Mathf.Log10(Mathf.Max(sfxSlider.value, 0.00001f)) * 20f;
+            sfxSliderVal = sfxSlider.value;
+            float volumeinDb = Mathf.Log10(Mathf.Max(sfxSliderVal, 0.00001f)) * 20f;
             mixer.SetFloat("SFXVolume", volumeinDb);
     }
     public void SetBGVolume()
     {
-            float volumeinDb = Mathf.Log10(Mathf.Max(bgSlider.value, 0.00001f)) * 20f;
+            bgSliderVal = bgSlider.value;
+            float volumeinDb = Mathf.Log10(Mathf.Max(bgSliderVal, 0.00001f)) * 20f;
             mixer.SetFloat("BackgroundVolume", volumeinDb);
 
     }
