@@ -1,16 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class TutorialManager : MonoBehaviour
 {
-   public GameObject[] popUps;
-   private int popUpIndex;
-   public GameObject Obstacle;
-   void Update()
-    {   
+    public GameObject[] popUps;
+    private int popUpIndex;
+    public GameObject Obstacle;
+
+    void Update()
+    {
         for (int i = 0; i < popUps.Length; i++) // loops control which popup is displayed
-        { 
+        {
             if (i == popUpIndex)
             {
                 popUps[i].SetActive(true);
@@ -20,24 +22,25 @@ public class TutorialManager : MonoBehaviour
                 popUps[i].SetActive(false);
             }
         }
+
         if (popUpIndex == 0) // tutorial started
         {
-            if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow)) // left and right 
+            if (Keyboard.current.leftArrowKey.wasPressedThisFrame || Keyboard.current.rightArrowKey.wasPressedThisFrame) // left and right
             {
                 popUpIndex++;
             }
-            
-        } else if (popUpIndex == 1) // JUMP
+        }
+        else if (popUpIndex == 1) // JUMP
+        {
+            if (Keyboard.current.spaceKey.wasPressedThisFrame)
             {
-                if (Input.GetKeyDown(KeyCode.Space))  
-                {
-                    popUpIndex++;
-                }
+                popUpIndex++;
             }
-            else if (popUpIndex == 2) // obstacles
-            {
-                Obstacle.SetActive(true);
-            }
+        }
+        else if (popUpIndex == 2) // obstacles
+        {
+            Obstacle.SetActive(true);
+        }
     }
 }
 
