@@ -415,6 +415,8 @@ MonoBehaviour:
   movement: 0
   rb: {fileID: 298649088}
   speed: 5
+  jumpHeight: 7
+  isGround: 1
 --- !u!61 &298649090
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6554,7 +6556,7 @@ GameObject:
   - component: {fileID: 1925958598}
   m_Layer: 0
   m_Name: Floor
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
