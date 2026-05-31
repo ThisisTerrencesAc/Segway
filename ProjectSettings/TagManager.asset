@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Bad
   - Ground
+  - Block
   layers:
   - Default
   - TransparentFX

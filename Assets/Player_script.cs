@@ -62,6 +62,7 @@ public class Player_script : MonoBehaviour
         if (other.collider.CompareTag("Ground"))
             isGround = false;
     }
+    
 }
 
 
@@ -69,7 +70,13 @@ public class Player_script : MonoBehaviour
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-
+void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.gameObject.CompareTag("Block"))
+        {
+            rb.AddForce(Vector2.up * 600f);
+        }
+    }
 public class Player_script : MonoBehaviour
 {
     public float movement;
