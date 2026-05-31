@@ -131,7 +131,7 @@ GameObject:
   - component: {fileID: 42603698}
   - component: {fileID: 42603697}
   m_Layer: 0
-  m_Name: Layer-1 (2)
+  m_Name: Layer-5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -478,6 +478,7 @@ MonoBehaviour:
   speed: 10
   jumpHeight: 7
   isGround: 1
+  animator: {fileID: 298649086}
 --- !u!61 &298649090
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -612,7 +613,7 @@ GameObject:
   - component: {fileID: 422640953}
   - component: {fileID: 422640955}
   m_Layer: 0
-  m_Name: Layer-1
+  m_Name: Layer-3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8132,7 +8133,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -2253911629886400664, guid: c31706ee96ca2488eb1a0f2e5a2a0df1, type: 3}
       propertyPath: m_Name
-      value: Layer-0 (1)
+      value: Layer-1
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: c31706ee96ca2488eb1a0f2e5a2a0df1, type: 3}
       propertyPath: m_LocalScale.x
@@ -11705,7 +11706,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -2253911629886400664, guid: c31706ee96ca2488eb1a0f2e5a2a0df1, type: 3}
       propertyPath: m_Name
-      value: Layer-0 (2)
+      value: Layer-2
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: c31706ee96ca2488eb1a0f2e5a2a0df1, type: 3}
       propertyPath: m_LocalScale.x
@@ -15610,7 +15611,7 @@ GameObject:
   - component: {fileID: 1809042876}
   - component: {fileID: 1809042875}
   m_Layer: 0
-  m_Name: Layer-1 (1)
+  m_Name: Layer-4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -37,10 +37,13 @@ public class TutorialManager : MonoBehaviour
                 popUpIndex++;
             }
         }
-        else if (popUpIndex == 2) // obstacles
-        {
-            Obstacle.SetActive(true);
-        }
+       
     }
 }
 
+/*
+ else if (popUpIndex == 2) // obstacles
+        {
+            Obstacle.SetActive(true);
+        }
+*/
