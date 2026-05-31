@@ -7,6 +7,7 @@ TagManager:
   - Bad
   - Ground
   - Block
+  - tutorial_player
   layers:
   - Default
   - TransparentFX
