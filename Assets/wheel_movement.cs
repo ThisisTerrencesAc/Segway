@@ -7,19 +7,13 @@ public class wheel_movement : MonoBehaviour
 {
     [SerializeField] private float forceStrength = 4f;
     [SerializeField] private float jumpForce = 6f;
-    [SerializeField] private float restoringForce = 2.3f;
+    [SerializeField] private float restoringForce = 1f;
+    [SerializeField] private float proportionalGain = 0.3f;
+    [SerializeField] private float derivativeGain = 0.05f;
     [SerializeField] private Rigidbody2D wheelRigidbody;
     [SerializeField] private Transform playerPosition;
     [SerializeField] private float groundNormalThreshold = 0.5f;
-    [SerializeField] private bool useGentleMovementTuning = true;
-    [SerializeField] private float tapDirectionMultiplier = 0.6f;
-    [SerializeField] private float holdDirectionMultiplier = 2f;
-    [SerializeField] private float holdRampTime = 0.65f;
-    [SerializeField] private float tapForcePointYOffset = -0.25f;
-    [SerializeField] private float holdForcePointYOffset = -1f;
     private float direction;
-    private float moveInput;
-    private float moveHeldTime;
     private float restore;
     private readonly HashSet<Collider2D> groundColliders = new HashSet<Collider2D>();
 
@@ -35,19 +29,16 @@ public class wheel_movement : MonoBehaviour
         if (value.Get<Vector2>().x > 0.01f)
         {
             direction = 2f;
-            moveInput = 1f;
         }
 
         else if (value.Get<Vector2>().x < -0.01)
         {
             direction = -2f;
-            moveInput = -1f;
         }
 
         else
         {
             direction = 0f;
-            moveInput = 0f;
         }
     }
 
@@ -63,8 +54,12 @@ public class wheel_movement : MonoBehaviour
 
     public void PID()
     {
-        Quaternion angle = transform.rotation;
-        restore = angle.z / 0.7489139f;
+        float signedTiltAngle = Vector2.SignedAngle(Vector2.up, transform.up);
+        float tiltError = signedTiltAngle / 90f;
+
+        float proportional = tiltError * proportionalGain;
+        float derivative = wheelRigidbody.angularVelocity * derivativeGain;
+        restore = proportional + derivative;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -111,33 +106,10 @@ public class wheel_movement : MonoBehaviour
     {
         if (!IsGrounded)
         {
-            moveHeldTime = 0f;
             return;
         }
 
-        if (!useGentleMovementTuning)
-        {
-            wheelRigidbody.AddForceAtPosition(direction * transform.right * forceStrength, playerPosition.position - new Vector3(0, 1f, 0));
-        }
-        else
-        {
-            if (Mathf.Abs(moveInput) > 0.01f)
-            {
-                moveHeldTime += Time.fixedDeltaTime;
-            }
-            else
-            {
-                moveHeldTime = 0f;
-            }
-
-            float holdAmount = holdRampTime > 0f ? Mathf.Clamp01(moveHeldTime / holdRampTime) : 1f;
-            float directionMultiplier = Mathf.Lerp(tapDirectionMultiplier, holdDirectionMultiplier, holdAmount);
-            float forcePointYOffset = Mathf.Lerp(tapForcePointYOffset, holdForcePointYOffset, holdAmount);
-            Vector3 forcePosition = playerPosition.position + new Vector3(0f, forcePointYOffset, 0f);
-
-            wheelRigidbody.AddForceAtPosition(moveInput * directionMultiplier * transform.right * forceStrength, forcePosition);
-        }
-
+        wheelRigidbody.AddForceAtPosition(direction * transform.right * forceStrength, playerPosition.position - new Vector3(0, 1f, 0));
         PID();
         Vector3 restoreForce = new Vector3(restore * restoringForce, transform.up.y, 0);
         wheelRigidbody.AddForceAtPosition(restoreForce, playerPosition.position + new Vector3(0, 1f, 0));

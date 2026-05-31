@@ -3863,9 +3863,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::wheel_movement
   forceStrength: 3
+  jumpForce: 6
   restoringForce: 3
+  proportionalGain: 1
+  integralGain: 0.04
+  derivativeGain: 0.02
+  integralLimit: 1.2
   wheelRigidbody: {fileID: 0}
   playerPosition: {fileID: 1803015082}
+  groundNormalThreshold: 0.5
 --- !u!58 &927301892
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -6922,7 +6928,7 @@ GameObject:
   - component: {fileID: 1891984406}
   - component: {fileID: 1891984408}
   m_Layer: 0
-  m_Name: Square
+  m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
