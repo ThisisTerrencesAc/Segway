@@ -1,9 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-
-
-
 public class Player_script : MonoBehaviour
 {
     public float movement;
