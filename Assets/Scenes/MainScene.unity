@@ -660,7 +660,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a3ca76914bbe4c22b2c6118d6813e11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  sceneName: main_level
+  sceneName: Tutorial
 --- !u!114 &711450964
 MonoBehaviour:
   m_ObjectHideFlags: 0
