@@ -13,6 +13,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] Slider audioSlider;
     [SerializeField] Slider sfxSlider;
     [SerializeField] Slider bgSlider;
+    [SerializeField] private AudioSource sfxSource;
     public static AudioManager instance;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -56,6 +57,10 @@ public class AudioManager : MonoBehaviour
             float volumeinDb = Mathf.Log10(Mathf.Max(bgSliderVal, 0.00001f)) * 20f;
             mixer.SetFloat("BackgroundVolume", volumeinDb);
 
+    }
+    public void PlaySFX(AudioClip clip)
+    {
+        sfxSource.PlayOneShot(clip);
     }
 
 

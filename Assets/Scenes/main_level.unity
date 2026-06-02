@@ -1264,6 +1264,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef3e32b2d7319473bab61824304af945, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameOver
+  sfxClip: {fileID: 8300000, guid: 5eaaee2d3ea83482a91313142cc7b2b7, type: 3}
 --- !u!212 &674686757
 SpriteRenderer:
   serializedVersion: 2
@@ -6007,6 +6008,7 @@ MonoBehaviour:
   wheelRigidbody: {fileID: 0}
   playerPosition: {fileID: 1803015082}
   groundNormalThreshold: 0.5
+  jumpSFX: {fileID: 8300000, guid: 90e8e1212cbbf4100a8162c5ab6e76c4, type: 3}
 --- !u!58 &927301892
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -13763,6 +13765,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef3e32b2d7319473bab61824304af945, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameOver
+  sfxClip: {fileID: 8300000, guid: 5eaaee2d3ea83482a91313142cc7b2b7, type: 3}
 --- !u!212 &1257814819
 SpriteRenderer:
   serializedVersion: 2
@@ -22129,6 +22132,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef3e32b2d7319473bab61824304af945, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameOver
+  sfxClip: {fileID: 8300000, guid: 7e93a42ad529c4850941e5859ae76996, type: 3}
 --- !u!212 &1790028307
 SpriteRenderer:
   serializedVersion: 2
@@ -22758,6 +22762,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef3e32b2d7319473bab61824304af945, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameOver
+  sfxClip: {fileID: 8300000, guid: 5eaaee2d3ea83482a91313142cc7b2b7, type: 3}
 --- !u!212 &2092021223
 SpriteRenderer:
   serializedVersion: 2

@@ -20,10 +20,11 @@ public class wheel_movement : MonoBehaviour
     private bool IsGrounded => groundColliders.Count > 0;
 
     private Animator playerAnim;
+    [SerializeField] private AudioClip jumpSFX;
 
     void Start()
     {
-        playerAnim = GetComponentInChildren<Animator>();
+        playerAnim = GetComponentInChildren<Animator>();      
     }
     
 
@@ -57,12 +58,18 @@ public class wheel_movement : MonoBehaviour
 
     public void OnJump(InputValue value)
     {
+        if (jumpSFX != null)
+        {
+            AudioManager.instance.PlaySFX(jumpSFX);
+        }
         if (!value.isPressed || !IsGrounded)
         {
             return;
         }
 
         wheelRigidbody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+
+        
     }
 
     public void PID()
