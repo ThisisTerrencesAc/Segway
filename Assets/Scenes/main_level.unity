@@ -5653,7 +5653,6 @@ Transform:
   - {fileID: 927301895}
   - {fileID: 1760017214}
   - {fileID: 804185633}
-  - {fileID: 1824961479}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1219331309
@@ -20869,8 +20868,8 @@ Transform:
   m_GameObject: {fileID: 1803015081}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.07, y: 1.6309, z: 0}
-  m_LocalScale: {x: 1.3601257, y: 3.2617967, z: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalScale: {x: 0.5, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 927301895}
@@ -20913,7 +20912,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.64285713, y: 1}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -20970,7 +20969,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -9221985081916586790, guid: a3296394963a3904894aee686b56cf9a, type: 3}
+  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -21017,8 +21016,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1824961477}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -1, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -21026,7 +21025,7 @@ Transform:
   - {fileID: 816490674}
   - {fileID: 1472659451}
   - {fileID: 211196731}
-  m_Father: {fileID: 1219331308}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1958588904
 GameObject:
@@ -21161,4 +21160,5 @@ SceneRoots:
   m_Roots:
   - {fileID: 212082016}
   - {fileID: 1219331308}
+  - {fileID: 1824961479}
   - {fileID: 1038405334}
