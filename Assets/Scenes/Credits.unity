@@ -495,16 +495,13 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Developers:
-
-
-    Sound:
-
-
-    Images:'
+  m_text: "Developers:\nAidan Go, Oyshee Dey, Terrence Han\n\nSound:\nPixabay Free
+    Sound Effects\nUppbeat - A Day In My Life by Dark Cat\n\nTilesets:\nAidan Go\nOyshee
+    Dey\nhttps://free-game-assets.itch.io/power-station-free-tileset-pixel-art \nhttps://free-game-assets.itch.io/free-industrial-zone-tileset-pixel-art
+    \nhttps://gandalfhardcore.itch.io/free-pixel-art-sidescroller-asset-pack-32x32-city\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 79459efec17a4d00a321bdcc27bbc385, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -641,7 +638,7 @@ MonoBehaviour:
   m_text: Credits
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 79459efec17a4d00a321bdcc27bbc385, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -926,7 +923,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1.8694, y: -169}
+  m_AnchoredPosition: {x: -1.8694304, y: -206.2972}
   m_SizeDelta: {x: 116.3819, y: 28.7538}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1847001689
