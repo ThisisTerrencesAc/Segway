@@ -18,6 +18,8 @@ public class AudioManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        if(!(audioSlider && sfxSlider && bgSlider))
+            return;
         audioSlider.value = audioSliderVal;
         sfxSlider.value = sfxSliderVal;
         bgSlider.value = bgSliderVal;
