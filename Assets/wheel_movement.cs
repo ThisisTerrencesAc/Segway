@@ -7,6 +7,7 @@ public class wheel_movement : MonoBehaviour
 {
     [SerializeField] private float forceStrength = 4f;
     [SerializeField] private float jumpForce = 6f;
+    [SerializeField] private float coyoteTime = 0.12f;
     [SerializeField] private float restoringForce = 1f;
     [SerializeField] private float proportionalGain = 0.3f;
     [SerializeField] private float derivativeGain = 0.05f;
@@ -14,6 +15,8 @@ public class wheel_movement : MonoBehaviour
     [SerializeField] private Transform playerPosition;
     [SerializeField] private float groundNormalThreshold = 0.5f;
     private float direction;
+    private float lastGroundedTime = Mathf.NegativeInfinity;
+    private float lastJumpTime = Mathf.NegativeInfinity;
     private float restore;
     private readonly HashSet<Collider2D> groundColliders = new HashSet<Collider2D>();
 
@@ -35,7 +38,15 @@ public class wheel_movement : MonoBehaviour
 
     void Update()
     {
-        playerAnim.SetBool("IsMoving", Mathf.Abs(wheelRigidbody.linearVelocity.x) > 0.01f);
+        if (playerAnim != null)
+        {
+            playerAnim.SetBool("IsMoving", Mathf.Abs(wheelRigidbody.linearVelocity.x) > 0.01f);
+        }
+
+        if (Keyboard.current != null && Keyboard.current.spaceKey.wasPressedThisFrame)
+        {
+            TryJump();
+        }
     }
 
     public void OnMove(InputValue value)
@@ -58,18 +69,33 @@ public class wheel_movement : MonoBehaviour
 
     public void OnJump(InputValue value)
     {
-        if (jumpSFX != null)
+        if (value.isPressed)
         {
-            AudioManager.instance.PlaySFX(jumpSFX);
+            TryJump();
         }
-        if (!value.isPressed || !IsGrounded)
+    }
+
+    private void TryJump()
+    {
+        if (Time.time - lastJumpTime <= Time.fixedDeltaTime)
         {
             return;
         }
 
+        if (Time.time - lastGroundedTime > coyoteTime)
+        {
+            return;
+        }
+
+        lastJumpTime = Time.time;
+        lastGroundedTime = Mathf.NegativeInfinity;
+        wheelRigidbody.linearVelocity = new Vector2(wheelRigidbody.linearVelocity.x, Mathf.Max(wheelRigidbody.linearVelocity.y, 0f));
         wheelRigidbody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
 
-        
+        if (jumpSFX != null && AudioManager.instance != null)
+        {
+            AudioManager.instance.PlaySFX(jumpSFX);
+        }
     }
 
     public void PID()
@@ -102,6 +128,7 @@ public class wheel_movement : MonoBehaviour
         if (HasGroundContact(collision))
         {
             groundColliders.Add(collision.collider);
+            lastGroundedTime = Time.time;
         }
         else
         {
@@ -129,6 +156,7 @@ public class wheel_movement : MonoBehaviour
             return;
         }
 
+        lastGroundedTime = Time.time;
         wheelRigidbody.AddForceAtPosition(direction * transform.right * forceStrength, playerPosition.position - new Vector3(0, 1f, 0));
         PID();
         Vector3 restoreForce = new Vector3(restore * restoringForce, transform.up.y, 0);
