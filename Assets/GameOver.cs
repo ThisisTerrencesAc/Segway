@@ -15,7 +15,7 @@ public class GameOver : MonoBehaviour
         
     }
 
-    void OnTrigger2D(Collider2D col)
+    void OnTriggerEnter2D(Collider2D col)
     {
         if(col.CompareTag("Player"))
         {
