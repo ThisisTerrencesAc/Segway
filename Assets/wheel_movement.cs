@@ -5,7 +5,7 @@ using System.Collections.Generic;
 [RequireComponent(typeof(Rigidbody2D))]
 public class wheel_movement : MonoBehaviour
 {
-    [SerializeField] private float forceStrength = 5f;
+    [SerializeField] private float forceStrength = 6f;
     [SerializeField] private float jumpForce = 8f;
     [SerializeField] private float coyoteTime = 0.12f;
     [SerializeField] private float restoringForce = 2f;
