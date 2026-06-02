@@ -19,7 +19,7 @@ public class WinScreen : MonoBehaviour
     {
         if(col.CompareTag("Player"))
         {
-            SceneManager.LoadScene("MainScene");
+            SceneManager.LoadScene("Congrats");
         }
     }
 
