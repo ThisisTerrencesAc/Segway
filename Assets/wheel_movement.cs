@@ -8,7 +8,7 @@ public class wheel_movement : MonoBehaviour
     [SerializeField] private float forceStrength = 4f;
     [SerializeField] private float jumpForce = 6f;
     [SerializeField] private float coyoteTime = 0.12f;
-    [SerializeField] private float restoringForce = 1f;
+    [SerializeField] private float restoringForce = 2f;
     [SerializeField] private float proportionalGain = 0.3f;
     [SerializeField] private float derivativeGain = 0.05f;
     [SerializeField] private Rigidbody2D wheelRigidbody;
@@ -27,9 +27,9 @@ public class wheel_movement : MonoBehaviour
 
     void Start()
     {
-        playerAnim = GetComponentInChildren<Animator>();      
+        playerAnim = GetComponentInChildren<Animator>();
     }
-    
+
 
     private void Awake()
     {
