@@ -19,9 +19,22 @@ public class wheel_movement : MonoBehaviour
 
     private bool IsGrounded => groundColliders.Count > 0;
 
+    private Animator playerAnim;
+
+    void Start()
+    {
+        playerAnim = GetComponentInChildren<Animator>();
+    }
+    
+
     private void Awake()
     {
         wheelRigidbody = GetComponent<Rigidbody2D>();
+    }
+
+    void Update()
+    {
+        playerAnim.SetBool("IsMoving", Mathf.Abs(wheelRigidbody.linearVelocity.x) > 0.01f);
     }
 
     public void OnMove(InputValue value)
