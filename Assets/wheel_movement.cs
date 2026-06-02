@@ -17,6 +17,7 @@ public class wheel_movement : MonoBehaviour
     private float direction;
     private float lastGroundedTime = Mathf.NegativeInfinity;
     private float lastJumpTime = Mathf.NegativeInfinity;
+    private Quaternion uprightRotation;
     private float restore;
     private readonly HashSet<Collider2D> groundColliders = new HashSet<Collider2D>();
 
@@ -34,6 +35,7 @@ public class wheel_movement : MonoBehaviour
     private void Awake()
     {
         wheelRigidbody = GetComponent<Rigidbody2D>();
+        uprightRotation = transform.rotation;
     }
 
     void Update()
@@ -100,12 +102,21 @@ public class wheel_movement : MonoBehaviour
 
     public void PID()
     {
-        float signedTiltAngle = Vector2.SignedAngle(Vector2.up, transform.up);
-        float tiltError = signedTiltAngle / 90f;
+        float theta = GetSignedTiltTheta();
+        float tiltError = theta / 90f;
 
         float proportional = tiltError * proportionalGain;
         float derivative = wheelRigidbody.angularVelocity * derivativeGain;
         restore = proportional + derivative;
+    }
+
+    private float GetSignedTiltTheta()
+    {
+        Quaternion deltaRotation = Quaternion.Inverse(uprightRotation) * transform.rotation;
+        deltaRotation.ToAngleAxis(out float angle, out Vector3 axis);
+
+        float signedAngle = axis.z < 0f ? -angle : angle;
+        return Mathf.DeltaAngle(0f, signedAngle);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
